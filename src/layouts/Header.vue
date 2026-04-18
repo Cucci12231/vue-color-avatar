@@ -103,7 +103,7 @@ onUnmounted(() => {
 .header {
   display: flex;
   align-items: center;
-  height: var.$layout-header-height);
+  height: var.$layout-header-height;
   padding: 1rem 2rem;
 
   .site-title {
@@ -132,10 +132,10 @@ onUnmounted(() => {
       width: 9rem;
       height: 2.6rem;
       overflow: hidden;
-      color: var.$color-text);
+      color: var.$color-text;
       font-weight: bold;
       font-size: 1.05rem;
-      background-color: var.$color-dark);
+      background-color: var.$color-dark;
       border-radius: 0.6rem;
       cursor: pointer;
       user-select: none;
@@ -171,7 +171,7 @@ onUnmounted(() => {
         }
 
         &:focus {
-          outline: 2px solid var.$color-accent);
+          outline: 2px solid var.$color-accent;
           outline-offset: 2px;
         }
 
@@ -180,7 +180,7 @@ onUnmounted(() => {
           height: 100%;
           border-radius: 50%;
           overflow: hidden;
-          border: 2px solid var.$color-accent);
+          border: 2px solid var.$color-accent;
 
           img {
             width: 100%;
@@ -214,7 +214,7 @@ onUnmounted(() => {
         right: 0;
         min-width: 160px;
         padding: 0.5rem 0;
-        background-color: var.$color-dark);
+        background-color: var.$color-dark;
         border-radius: 0.6rem;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         z-index: 1000;
@@ -224,13 +224,13 @@ onUnmounted(() => {
           display: flex;
           align-items: center;
           padding: 0.75rem 1rem;
-          color: var.$color-text);
+          color: var.$color-text;
           font-size: 0.95rem;
           cursor: pointer;
           transition: background-color 0.15s;
 
           &:hover {
-            background-color: var.$color-gray);
+            background-color: var.$color-gray;
           }
 
           .item-icon {

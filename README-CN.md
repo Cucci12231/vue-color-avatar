@@ -48,7 +48,7 @@ _非常适合新手快速上手和贡献者深入理解项目_
 - 设计师：[@Micah](https://www.figma.com/@Micah) on Figma
 - 素材来源：[Avatar Illustration System](https://www.figma.com/community/file/829741575478342595)
 
-> **Note**  
+> **Note**\
 > 虽然该项目是 MIT 协议，但是素材资源基于 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 协议。如果你有好的创意素材，欢迎补充！
 
 ## 项目开发
@@ -80,4 +80,4 @@ docker build -t vue-color-avatar:latest .
 docker run -d -p 3000:80 --name vue-color-avatar vue-color-avatar:latest
 ```
 
-最后，打开你的浏览器访问服务的地址 http://localhost:3000 即可。
+最后，打开你的浏览器访问服务的地址 <http://localhost:3000> 即可。

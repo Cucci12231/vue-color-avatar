@@ -287,7 +287,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var.$layout-header-height);
+  height: var.$layout-header-height;
   padding: 1rem 2rem;
   background-color: var.$color-dark;
 
@@ -298,14 +298,14 @@ onMounted(() => {
     padding: 0.5rem 1rem;
     background: none;
     border: none;
-    color: var.$color-text);
+    color: var.$color-text;
     font-size: 0.95rem;
     cursor: pointer;
     border-radius: 0.5rem;
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: var.$color-gray);
+      background-color: var.$color-gray;
     }
 
     img {
@@ -342,7 +342,7 @@ onMounted(() => {
   width: 100%;
   max-width: 500px;
   padding: 2rem;
-  background-color: var.$color-dark);
+  background-color: var.$color-dark;
   border-radius: 1rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
@@ -365,7 +365,7 @@ onMounted(() => {
       height: 100%;
       border-radius: 50%;
       overflow: hidden;
-      border: 3px solid var.$color-accent);
+      border: 3px solid var.$color-accent;
 
       img {
         width: 100%;
@@ -396,7 +396,7 @@ onMounted(() => {
       position: relative;
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
-      color: var.$color-accent);
+      color: var.$color-accent;
       background-color: rgba(var.$color-accent, 0.1);
       border: none;
       border-radius: 0.5rem;
@@ -446,15 +446,15 @@ onMounted(() => {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var.$color-text);
+    color: var.$color-text;
   }
 
   .form-input {
     width: 100%;
     padding: 0.875rem 1rem;
     font-size: 1rem;
-    color: var.$color-text);
-    background-color: var.$color-gray);
+    color: var.$color-text;
+    background-color: var.$color-gray;
     border: 2px solid transparent;
     border-radius: 0.6rem;
     outline: none;
@@ -466,7 +466,7 @@ onMounted(() => {
     }
 
     &:focus {
-      border-color: var.$color-accent);
+      border-color: var.$color-accent;
       background-color: darken(var.$color-gray, 2);
     }
 
@@ -488,7 +488,7 @@ onMounted(() => {
     cursor: pointer;
 
     &:hover {
-      color: var.$color-accent);
+      color: var.$color-accent;
     }
   }
 
@@ -540,7 +540,7 @@ onMounted(() => {
     font-size: 1.05rem;
     font-weight: bold;
     color: #fff;
-    background-color: var.$color-accent);
+    background-color: var.$color-accent;
     border: none;
     border-radius: 0.6rem;
     cursor: pointer;
@@ -594,7 +594,7 @@ onMounted(() => {
     }
 
     .gradient-bottom {
-      @include gradient-style(var.$color-accent);
+      @include gradient-style(var.$color-accent;
       bottom: -40%;
       left: -20%;
     }
