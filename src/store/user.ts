@@ -32,23 +32,41 @@ export const useUserStore = defineStore('user', () => {
   }
 
   function login(username: string, password: string): boolean {
-    if (username === DEFAULT_USER.username && password === DEFAULT_PASSWORD) {
-      const savedUserInfo = getCookie('userInfo')
-      if (savedUserInfo) {
-        try {
-          const parsed = JSON.parse(savedUserInfo)
-          userInfo.value = { ...DEFAULT_USER, ...parsed, username: DEFAULT_USER.username }
-        } catch {
-          userInfo.value = { ...DEFAULT_USER }
+    if (username !== DEFAULT_USER.username) {
+      return false
+    }
+
+    const savedPassword = getCookie('userPassword')
+    let passwordValid = false
+
+    if (savedPassword) {
+      passwordValid = password === savedPassword
+    } else {
+      passwordValid = password === DEFAULT_PASSWORD
+    }
+
+    if (!passwordValid) {
+      return false
+    }
+
+    const savedUserInfo = getCookie('userInfo')
+    if (savedUserInfo) {
+      try {
+        const parsed = JSON.parse(savedUserInfo)
+        userInfo.value = {
+          ...DEFAULT_USER,
+          ...parsed,
+          username: DEFAULT_USER.username,
         }
-      } else {
+      } catch {
         userInfo.value = { ...DEFAULT_USER }
       }
-      isLoggedIn.value = true
-      saveToCookie()
-      return true
+    } else {
+      userInfo.value = { ...DEFAULT_USER }
     }
-    return false
+
+    isLoggedIn.value = true
+    return true
   }
 
   function logout(): void {
@@ -57,7 +75,7 @@ export const useUserStore = defineStore('user', () => {
     deleteCookie('userInfo')
   }
 
-  function updateProfile(data: Partial<UserInfo> & { password?: string }): boolean {
+  function updateProfile(data: Partial<UserInfo>): boolean {
     if (userInfo.value) {
       userInfo.value = {
         ...userInfo.value,
