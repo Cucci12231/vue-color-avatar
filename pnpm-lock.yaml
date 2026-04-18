@@ -35,6 +35,9 @@ importers:
       vue-i18n:
         specifier: ^9.2.0-beta.9
         version: 9.14.2(vue@3.5.13(typescript@4.9.5))
+      vue-router:
+        specifier: '4'
+        version: 4.6.4(vue@3.5.13(typescript@4.9.5))
     devDependencies:
       '@babel/core':
         specifier: ^7.17.0
@@ -4552,6 +4555,11 @@ packages:
     engines: {node: '>= 16'}
     peerDependencies:
       vue: ^3.0.0
+
+  vue-router@4.6.4:
+    resolution: {integrity: sha512-Hz9q5sa33Yhduglwz6g9skT8OBPii+4bFn88w6J+J4MfEo4KRRpmiNG/hHHkdbRFlLBOqxN8y8gf2Fb0MTUgVg==}
+    peerDependencies:
+      vue: ^3.5.0
 
   vue-tsc@0.31.4:
     resolution: {integrity: sha512-8RnKGmQRo/0rbXkyZmKCOdT62fNWyEaMdS/BDAPE+saGNAniUZsjpOSOjAiLwsQc5qgeI9/mY1W3o4tX7H/7MA==}
@@ -10005,6 +10013,11 @@ snapshots:
     dependencies:
       '@intlify/core-base': 9.14.2
       '@intlify/shared': 9.14.2
+      '@vue/devtools-api': 6.6.4
+      vue: 3.5.13(typescript@4.9.5)
+
+  vue-router@4.6.4(vue@3.5.13(typescript@4.9.5)):
+    dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@4.9.5)
 
