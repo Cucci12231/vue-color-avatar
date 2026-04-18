@@ -594,7 +594,7 @@ onMounted(() => {
     }
 
     .gradient-bottom {
-      @include gradient-style(var.$color-accent;
+      @include gradient-style(var.$color-accent);
       bottom: -40%;
       left: -20%;
     }
