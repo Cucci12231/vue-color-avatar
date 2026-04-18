@@ -146,12 +146,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 import IconBack from '@/assets/icons/icon-back.svg'
 import { useUserStore } from '@/store/user'
-import type { UserInfo } from '@/types/user'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -173,7 +172,7 @@ const errorMessage = ref('')
 const successMessage = ref('')
 
 const usernameInitial = computed(() => {
-  return form.value.username.charAt(0).toUpperCase()
+  return userStore.userInfo?.username?.charAt(0).toUpperCase() || 'A'
 })
 
 function goBack(): void {
@@ -196,13 +195,25 @@ function handleAvatarUpload(event: Event): void {
   const reader = new FileReader()
   reader.onload = (e) => {
     const dataUrl = e.target?.result as string
-    userStore.updateProfile({ avatar: dataUrl } as Partial<UserInfo>)
+    const success = userStore.updateProfile({ avatar: dataUrl })
+    if (success) {
+      successMessage.value = '头像更新成功！'
+      setTimeout(() => {
+        successMessage.value = ''
+      }, 3000)
+    }
   }
   reader.readAsDataURL(file)
 }
 
 function removeAvatar(): void {
-  userStore.updateProfile({ avatar: '' } as Partial<UserInfo>)
+  const success = userStore.updateProfile({ avatar: '' })
+  if (success) {
+    successMessage.value = '头像已移除！'
+    setTimeout(() => {
+      successMessage.value = ''
+    }, 3000)
+  }
 }
 
 function validateForm(): boolean {
@@ -240,17 +251,22 @@ async function handleSave(): Promise<void> {
   saving.value = true
 
   setTimeout(() => {
-    userStore.updateProfile({
+    const success = userStore.updateProfile({
       phone: form.value.phone,
       email: form.value.email,
-    } as Partial<UserInfo>)
+    })
 
     if (form.value.newPassword) {
       userStore.updatePassword(form.value.newPassword)
     }
 
     saving.value = false
-    successMessage.value = '保存成功！'
+
+    if (success) {
+      successMessage.value = '保存成功！'
+    } else {
+      errorMessage.value = '保存失败，请重试'
+    }
 
     form.value.currentPassword = ''
     form.value.newPassword = ''
@@ -258,12 +274,23 @@ async function handleSave(): Promise<void> {
 
     setTimeout(() => {
       successMessage.value = ''
+      errorMessage.value = ''
     }, 3000)
   }, 500)
 }
 
+watch(
+  () => userStore.userInfo,
+  () => {
+    initForm()
+  },
+  { immediate: true }
+)
+
 onMounted(() => {
-  initForm()
+  if (!userStore.userInfo) {
+    userStore.initFromCookie()
+  }
 })
 </script>
 
